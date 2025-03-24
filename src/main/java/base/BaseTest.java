@@ -5,22 +5,23 @@ import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
+import utilities.ConfigReader;
 
 public class BaseTest {
 
     protected WebDriver driver;
-    protected String baseUrl; // ✅ Store URL here
+    //protected String baseUrl; // ✅ Store URL here
     @BeforeSuite
     public void setupLogger() {
-        PropertyConfigurator.configure("src/main/resources/log4j.properties");
+        PropertyConfigurator.configure("C:\\Users\\RAJA\\IdeaProjects\\SelAutFramework\\src\\test\\resources\\log4j.properties");
     }
     @BeforeMethod
-    @Parameters({"url"})
-    public void setUp(@Optional("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login") String url) { // ✅ Provide default value
-        this.baseUrl = url;
+    //@Parameters({"url"})
+    public void setUp(){ //if you want to use parameters then pass String url argument to this method
+        //this.baseUrl = url;
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        //driver.get(ConfigReader.getProperty("url"));
         driver.manage().window().maximize();
     }
 

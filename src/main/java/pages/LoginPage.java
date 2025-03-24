@@ -12,6 +12,7 @@ import utilities.LoggerForAut;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import utilities.ConfigReader;
 
 public class LoginPage {
 
@@ -58,7 +59,9 @@ public class LoginPage {
 //        return credentials;
 //    }
 
-    public void login(String username, String password) throws InterruptedException{
+    public void validLoginTest(String username, String password) throws InterruptedException{
+
+        driver.get(ConfigReader.getProperty("url"));
         LoggerForAut.info("Starting login process...");
 
         wait.until(ExpectedConditions.visibilityOf(username_field)).sendKeys(username);
@@ -72,6 +75,7 @@ public class LoginPage {
         LoggerForAut.info("Clicked login button");
 
         LoggerForAut.info("Login process completed.");
+        //System.out.println("Print Configuration file value : "+ConfigReader.getProperty("browser"));
     }
 
 

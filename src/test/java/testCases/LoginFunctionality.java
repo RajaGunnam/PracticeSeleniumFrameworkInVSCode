@@ -17,7 +17,7 @@ public class LoginFunctionality extends BaseTest {
         //String pWD = credentials.get("password");
 
         // Perform login
-        lp.login("Admin", "admin123");
+        lp.validLoginTest("Admin", "admin123");
 
     }
 }
